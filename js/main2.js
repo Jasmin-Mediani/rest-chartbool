@@ -35,7 +35,54 @@ $(document).ready(function () {
                 var quantita = oggettoSingolo.amount;
                 //console.log("quantità: " + quantita);
 
+
+
+
+
+                /***************************  O QUESTA.......... ********************/
+                //arrayDiAmount[mese] += quantita;
+                /***************************  O QUESTA.......... ********************/
                 arrayDiAmount[mese] += quantita;
+
+                switch (mese) {
+                    case 0:
+                        arrayDiAmount[0] += quantita;
+                        break;
+                    case 1:
+                        arrayDiAmount[1] += quantita;
+                        break;
+                    case 2:
+                        arrayDiAmount[2] += quantita;
+                        break;
+                    case 3:
+                        arrayDiAmount[3] += quantita;
+                        break;
+                    case 4:
+                        arrayDiAmount[4] += quantita;
+                        break;
+                    case 5:
+                        arrayDiAmount[5] += quantita;
+                        break;
+                    case 6:
+                        arrayDiAmount[6] += quantita;
+                        break;
+                    case 7:
+                        arrayDiAmount[7] += quantita;
+                        break;
+                    case 8:
+                        arrayDiAmount[8] += quantita;
+                        break;
+                    case 9:
+                        arrayDiAmount[9] += quantita;
+                        break;
+                    case 10:
+                        arrayDiAmount[10] += quantita;
+                        break;
+                    case 11:
+                        arrayDiAmount[11] += quantita;
+                        break;
+
+                }
             }
 
 
