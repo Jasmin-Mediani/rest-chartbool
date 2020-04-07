@@ -207,15 +207,22 @@ $(document).ready(function () {
             var ctx = $('#grafico');
             var chart = new Chart(ctx, {
 
-                type: 'line',
+                type: "line",
+                //type: "pie",
                 data: {
                     datasets: [{
                         data: arrayQuantita, //asse delle ordinate (Y)
-                        backgroundColor: 'rgba(255, 180, 0, 0.75)',
+                        backgroundColor: ["rgba(0, 188, 212, 0.5)"],
+                        //(((per type: pie))) backgroundColor: ['rgba(242, 38, 59, 0.75)', 'rgba(233, 30, 99, 0.75)', 'rgba(156, 39, 176, 0.75)', 'rgba(63, 81, 181, 0.75)', 'rgba(29, 132, 215, 0.75)', 'rgba(0, 188, 212, 0.75)', 'rgba(0, 150, 136, 0.75)', 'rgba(76, 175, 80, 0.75)', 'rgba(205, 220, 57, 0.75)', 'rgba(255, 235, 59, 0.75)', 'rgba(255, 152, 0, 0.75)', 'rgba(244, 67, 54, 0.75)'],
                     }],
 
-                    labels: arrayMesi //asse delle ascisse (X)
+
+                    labels: arrayMesi, //asse delle ascisse (X)
+                    options: {
+
+                    }
                 }
+
             });
 
         },
