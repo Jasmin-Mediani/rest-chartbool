@@ -6,9 +6,9 @@ $(document).ready(function () {
         success: function (arrayDiOggetti) {
 
             var arrayDiAmount = [
-                0, //gennaio
-                0, //febbraio
-                0, //marzo
+                0, //amount di gennaio
+                0, //amount di febbraio
+                0, //amount di marzo
                 0, //ecc...
                 0,
                 0,
