@@ -29,13 +29,13 @@ $(document).ready(function () {
                     data: oggettoSingolo.date,
                 }
 
-                var mese = moment(dataDelcalendario.data, "DD-MM-YYYY").month() + 1; //+1 perché non ho trovato iso + month
+                var mese = moment(dataDelcalendario.data, "DD-MM-YYYY").month();
                 //console.log(mese);
 
                 var quantita = oggettoSingolo.amount;
                 //console.log("quantità: " + quantita);
 
-                arrayDiAmount[mese - 1] += quantita;
+                arrayDiAmount[mese] += quantita;
             }
 
 
