@@ -103,7 +103,7 @@ $(document).ready(function () {
             var sommaAmountGennaio = sommaGennaio;
             console.log("somma di gennaio:" + sommaGennaio);
 
-            /*** E DA QUI HO CAPITO CHE ERA MEGLIO UN ARRAY DI OGGETTI-MESI INVECE DI 12 ARRAY-MESI :(   */
+            /*** E DA QUI HO CAPITO CHE ERA MEGLIO UN ARRAY DI OGGETTI INVECE DI 12 ARRAY A GIRO :(   */
 
             /******** SOMMA FEBBRAIO ********/
             for (var i = 0, sommaFebbraio = 0; i < febbraio.length; sommaFebbraio += febbraio[i++]);
