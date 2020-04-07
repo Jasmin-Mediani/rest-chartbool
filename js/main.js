@@ -19,9 +19,6 @@ $(document).ready(function () {
             var dicembre = [];
 
 
-
-
-
             for (let i = 0; i < arrayDiOggetti.length; i++) {
                 var oggettoSingolo = arrayDiOggetti[i];
                 //console.log(oggettoSingolo);
@@ -84,10 +81,7 @@ $(document).ready(function () {
                     case 12:
                         dicembre.push(quantita);
                         break;
-
-
                 }
-
             }
 
             // console.log("gennaio: " + gennaio);
@@ -168,13 +162,65 @@ $(document).ready(function () {
             console.log("somma di dicembre:" + sommaDicembre);
 
 
+            /********************************* GRAFICO ***************************/
+
+            var mesiConValori = [ //creo il json... 
+                { mese: "gennaio", quantita: sommaAmountGennaio },
+                { mese: "febbraio", quantita: sommaAmountFebbraio },
+                { mese: "marzo", quantita: sommaAmountMarzo },
+                { mese: "aprile", quantita: sommaAmountAprile },
+                { mese: "maggio", quantita: sommaAmountMaggio },
+                { mese: "giugno", quantita: sommaAmountGiugno },
+                { mese: "luglio", quantita: sommaAmountLuglio },
+                { mese: "agosto", quantita: sommaAmountAgosto },
+                { mese: "settembre", quantita: sommaAmountSettembre },
+                { mese: "ottobre", quantita: sommaAmountOttobre },
+                { mese: "novembre", quantita: sommaAmountNovembre },
+                { mese: "dicembre", quantita: sommaAmountDicembre },
+            ]
+
+
+            var oggettoIntermedio = {}; //oggetto che avrà i nomi dei mesi per chiavi, e le loro corrispettive somme per valori... 
+
+            for (var i = 0; i < mesiConValori.length; i++) {
+                var meseSingolo = mesiConValori[i];
+                var mese = meseSingolo.mese;
+                if (oggettoIntermedio[mese] === undefined) {
+                    oggettoIntermedio[mese] = 0;
+                }
+
+                oggettoIntermedio[mese] += meseSingolo.quantita;
+
+            }
+
+
+            var arrayMesi = [];
+            var arrayQuantita = [];
+
+            for (var key in oggettoIntermedio) {
+                arrayMesi.push(key); //pusha il nome del mese nell'array mesi
+                arrayQuantita.push(oggettoIntermedio[key]); //pusha la sua corrispettiva quantità (somma dei valori di prima) nell'arrayQuantita
+            }
 
 
 
+            var ctx = $('#grafico');
+            var chart = new Chart(ctx, {
+
+                type: 'line',
+                data: {
+                    datasets: [{
+                        data: arrayQuantita, //asse delle ordinate (Y)
+                        backgroundColor: 'rgba(255, 180, 0, 0.75)',
+                    }],
+
+                    labels: arrayMesi //asse delle ascisse (X)
+                }
+            });
 
         },
         error: function () {
-
+            alert("c'è un errore nel caricamento della pagina");
         },
 
     });
