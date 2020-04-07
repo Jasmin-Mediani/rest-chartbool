@@ -42,7 +42,6 @@ $(document).ready(function () {
                 /***************************  O QUESTA.......... ********************/
                 //arrayDiAmount[mese] += quantita;
                 /***************************  O QUESTA.......... ********************/
-                arrayDiAmount[mese] += quantita;
 
                 switch (mese) {
                     case 0:
