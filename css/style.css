@@ -5,15 +5,31 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 }
 
-.container {
+.container1 {
   padding-top: 50px;
-  width: 50vw;
-  display: flex;
+  width: 700px;
   margin: auto;
-  justify-content: center;
+  float: left;
+  padding-left: 30px;
+}
+.container2 {
+  padding-top: 50px;
+  width: 700px;
+  margin: auto;
+  float: right;
+}
+
+
+
+.contenitore {
+  width: 500px;
+  position: absolute;
+  margin-top: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-evenly;
 }
