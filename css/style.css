@@ -5,11 +5,15 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    width: 60vw;
+  padding-top: 50px;
+  width: 50vw;
+  display: flex;
+  margin: auto;
+  justify-content: center;
 }
