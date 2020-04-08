@@ -23,7 +23,7 @@ $(document).ready(function () {
 
             for (let i = 0; i < arrayDiOggetti.length; i++) {
                 var oggettoSingolo = arrayDiOggetti[i];
-                //console.log(oggettoSingolo);
+                console.log(oggettoSingolo);
 
                 var dataDelcalendario = {
                     data: oggettoSingolo.date,
@@ -173,6 +173,8 @@ $(document).ready(function () {
                 var nomeVenditore = oggettoSingolo.salesman;
                 var quantita = oggettoSingolo.amount;
 
+                if (!nomeVenditore)
+                    continue;
                 if (!arrayDiNomi.includes(nomeVenditore)) {
                     arrayDiNomi.push(nomeVenditore);
                     quantitaInBaseAlNome.push(quantita);
@@ -191,7 +193,7 @@ $(document).ready(function () {
             }
 
             // console.log(totaleVendite);
-            // console.log(quantitaInBaseAlNome);
+            console.log(quantitaInBaseAlNome);
             // console.log(arrayDiNomi);
 
             var arrayPercentuali = [];
