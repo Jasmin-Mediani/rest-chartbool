@@ -29,11 +29,18 @@ $(document).ready(function () {
                     data: oggettoSingolo.date,
                 }
 
+
+
                 var mese = moment(dataDelcalendario.data, "DD-MM-YYYY").month();
                 //console.log(mese);
 
                 var quantita = oggettoSingolo.amount;
                 //console.log("quantità: " + quantita);
+
+
+                var nomeVenditore = {
+                    nome: oggettoSingolo.salesman,
+                }
 
 
 
@@ -85,7 +92,10 @@ $(document).ready(function () {
             }
 
 
-            /********************************* GRAFICO ***************************/
+
+
+
+            /********************************* GRAFICO 1 ***************************/
 
             var mesiConValori = [
                 { mese: "gennaio", quantita: arrayDiAmount[0] },
@@ -149,6 +159,74 @@ $(document).ready(function () {
                 }
 
             });
+
+
+
+
+            /**************** GRAFICO A TORTA CON PERCENTUALI DELLE VENDITE DEI VENDITORI*****************/
+
+            var arrayDiNomi = [];
+            var quantitaInBaseAlNome = [];
+
+            for (let i = 0; i < arrayDiOggetti.length; i++) {
+                var oggettoSingolo = arrayDiOggetti[i];
+                var nomeVenditore = oggettoSingolo.salesman;
+                var quantita = oggettoSingolo.amount;
+
+                if (!arrayDiNomi.includes(nomeVenditore)) {
+                    arrayDiNomi.push(nomeVenditore);
+                    quantitaInBaseAlNome.push(quantita);
+                } else {
+                    var indiceNomiVenditori = arrayDiNomi.indexOf(nomeVenditore);
+                    quantitaInBaseAlNome[indiceNomiVenditori] += quantita;
+                }
+
+            }
+
+
+            var totaleVendite = 0;
+            for (let i = 0; i < quantitaInBaseAlNome.length; i++) {
+                quantitaSingola = quantitaInBaseAlNome[i];
+                totaleVendite += quantitaSingola;
+            }
+
+            // console.log(totaleVendite);
+            // console.log(quantitaInBaseAlNome);
+            // console.log(arrayDiNomi);
+
+            var arrayPercentuali = [];
+
+            for (let i = 0; i < quantitaInBaseAlNome.length; i++) {
+                var percentuale = (quantitaInBaseAlNome[i] / totaleVendite) * 100;
+                arrayPercentuali.push(percentuale);
+            }
+            console.log(arrayPercentuali);
+
+
+
+
+            var ctx = $('#grafico-torta');
+            var chart = new Chart(ctx, {
+
+
+                type: "pie",
+                data: {
+                    datasets: [{
+                        data: arrayPercentuali, //asse delle ordinate (Y)
+                        backgroundColor: ['rgba(242, 38, 59, 0.75)', 'rgba(233, 30, 99, 0.75)', 'rgba(156, 39, 176, 0.75)', 'rgba(63, 81, 181, 0.75)', 'rgba(29, 132, 215, 0.75)', 'rgba(0, 188, 212, 0.75)', 'rgba(0, 150, 136, 0.75)', 'rgba(76, 175, 80, 0.75)', 'rgba(205, 220, 57, 0.75)', 'rgba(255, 235, 59, 0.75)', 'rgba(255, 152, 0, 0.75)', 'rgba(244, 67, 54, 0.75)'],
+
+                    }],
+
+
+                    labels: arrayDiNomi, //asse delle ascisse (X)
+                    options: {
+
+                    }
+                }
+
+            });
+
+
 
         },
         error: function () {
