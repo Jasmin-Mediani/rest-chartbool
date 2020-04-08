@@ -23,7 +23,7 @@ $(document).ready(function () {
 
             for (let i = 0; i < arrayDiOggetti.length; i++) {
                 var oggettoSingolo = arrayDiOggetti[i];
-                console.log(oggettoSingolo);
+                //console.log(oggettoSingolo);
 
                 var dataDelcalendario = {
                     data: oggettoSingolo.date,
@@ -34,7 +34,7 @@ $(document).ready(function () {
                 var mese = moment(dataDelcalendario.data, "DD-MM-YYYY").month();
                 //console.log(mese);
 
-                var quantita = oggettoSingolo.amount;
+                var quantita = parseInt(oggettoSingolo.amount);
                 //console.log("quantità: " + quantita);
 
 
@@ -163,7 +163,7 @@ $(document).ready(function () {
 
 
 
-            /**************** GRAFICO A TORTA CON PERCENTUALI DELLE VENDITE DEI VENDITORI*****************/
+            /**************** GRAFICO A TORTA CON PERCENTUALI DELLE VENDITE DEI VENDITORI *****************/
 
             var arrayDiNomi = [];
             var quantitaInBaseAlNome = [];
@@ -171,7 +171,7 @@ $(document).ready(function () {
             for (let i = 0; i < arrayDiOggetti.length; i++) {
                 var oggettoSingolo = arrayDiOggetti[i];
                 var nomeVenditore = oggettoSingolo.salesman;
-                var quantita = oggettoSingolo.amount;
+                var quantita = parseInt(oggettoSingolo.amount);
 
                 if (!nomeVenditore)
                     continue;
@@ -193,7 +193,7 @@ $(document).ready(function () {
             }
 
             // console.log(totaleVendite);
-            console.log(quantitaInBaseAlNome);
+            //console.log(quantitaInBaseAlNome);
             // console.log(arrayDiNomi);
 
             var arrayPercentuali = [];
@@ -202,7 +202,7 @@ $(document).ready(function () {
                 var percentuale = (quantitaInBaseAlNome[i] / totaleVendite) * 100;
                 arrayPercentuali.push(percentuale);
             }
-            console.log(arrayPercentuali);
+            //console.log(arrayPercentuali);
 
 
 
@@ -229,7 +229,6 @@ $(document).ready(function () {
             });
 
 
-
         },
         error: function () {
             alert("c'è un errore nel caricamento della pagina");
@@ -237,5 +236,32 @@ $(document).ready(function () {
 
     });
 
+
+    /***** INSERIMENTO DELLE VENDITE DA PARTE DELL'UTENTE ******/
+
+    $("#registra-vendita").click(function () {
+        var dataNelCalendario = "01/" + $("#seleziona-mese option:selected").val() + "/2017";
+
+        $.ajax({
+            url: "http://157.230.17.132:4021/sales",
+            type: "POST",
+            data: {
+
+                "salesman": $("#seleziona-venditore option:selected").val(),
+                "amount": parseInt($("input").val()),
+                "date": dataNelCalendario
+            },
+
+            success: function (datiInArrivo, stato) {
+                console.log(datiInArrivo, stato);
+
+            },
+            error: function () {
+                alert("errore");
+            },
+
+        });
+
+    });
 
 });
